@@ -24,6 +24,19 @@ class PostCreateFormTests(TestCase):
             author=cls.author,
         )
         cls.form = PostForm()
+        cls.small_gif = (
+            b'\x47\x49\x46\x38\x39\x61\x02\x00'
+            b'\x01\x00\x80\x00\x00\x00\x00\x00'
+            b'\xFF\xFF\xFF\x21\xF9\x04\x00\x00'
+            b'\x00\x00\x00\x2C\x00\x00\x00\x00'
+            b'\x02\x00\x01\x00\x00\x02\x02\x0C'
+            b'\x0A\x00\x3B'
+        )
+        cls.image = SimpleUploadedFile(
+            name='small.gif',
+            content=cls.small_gif,
+            content_type='image/gif'
+        )
 
     def setUp(self):
         self.guest_client = Client()
@@ -68,27 +81,13 @@ class PostCreateFormTests(TestCase):
 
     def test_client_create_image(self):
         """Авторизованный пользователь создает запись c изображением."""
-        small_gif = (
-            b'\x47\x49\x46\x38\x39\x61\x02\x00'
-            b'\x01\x00\x80\x00\x00\x00\x00\x00'
-            b'\xFF\xFF\xFF\x21\xF9\x04\x00\x00'
-            b'\x00\x00\x00\x2C\x00\x00\x00\x00'
-            b'\x02\x00\x01\x00\x00\x02\x02\x0C'
-            b'\x0A\x00\x3B'
-        )
-        small_gif_name = 'small.gif'
-        test_image = SimpleUploadedFile(
-            name=small_gif_name,
-            content=small_gif,
-            content_type='image/gif'
-        )
         post_aut_detail_url = reverse(
             'posts:profile', kwargs={'username': f'{self.author.username}'}
         )
         create_form_data = {
             'text': 'Test text',
             'group': self.group.id,
-            'image': test_image,
+            'image': self.image,
         }
         response = self.author_client.post(
             reverse('posts:post_create'),
