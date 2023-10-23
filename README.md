@@ -21,9 +21,10 @@ Yatube - это социальная сеть с авторизацией, пе�
 - Через панель администратора модерируются записи, происходит управление пользователями и создаются группы.
 
 ## Технологии
-- [GatsbyJS](https://www.gatsbyjs.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- ...
+- Python 3.9 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+- Django 2.2 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+- Pytest
+- Model-View-Template Structure
 
 ## Начало работы
 ### Необходимо:
