@@ -1,3 +1,78 @@
-# hw05_final
+# Проект YaTube
+Yatube - это социальная сеть с авторизацией, персональными лентами, комментариями и подписками на авторов статей.
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
+## Содержание
+- [Функционал](#функционал)
+- [Технологии](#технологии)
+- [Начало работы](#начало-работы)
+- [Тестирование](#тестирование)
+- [Команда проекта](#команда-проекта)
+
+## Функционал
+- Регистрируется и восстанавливается доступ по электронной почте;
+- Добавляются изображения к посту;
+- Создаются и редактируются собственные записи;
+- Просмотриваются страницы других авторов;
+- Комментируются записи других авторов;
+- Подписки и отписки от авторов;
+- Записи назначаются в отдельные группы;
+- Личная страница для публикации записей;
+- Отдельная лента с постами авторов на которых подписан пользователь;
+- Через панель администратора модерируются записи, происходит управление пользователями и создаются группы.
+
+## Технологии
+- Python 3.9 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+- Django 2.2 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+- Pytest
+- Model-View-Template Structure
+
+## Начало работы
+### Необходимо:
+1. Клонировать репозиторий:
+2. Перейти в папку с проектом:
+3. Установить виртуальное окружение для проекта:
+```sh
+python -m venv venv
+``` 
+4. Активировать виртуальное окружение для проекта:
+```sh
+# для OS Lunix и MacOS
+source venv/bin/activate
+
+# для OS Windows
+source venv/Scripts/activate
+```
+5. Установить зависимости:
+```sh
+python3 -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+6. Выполнить миграции на уровне проекта:
+```sh
+cd yatube
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+7. Запустить проект локально:
+```sh
+python3 manage.py runserver
+
+# адрес запущенного проекта
+http://127.0.0.1:8000
+```
+8. Зарегистирировать суперпользователя Django:
+```sh
+python3 manage.py createsuperuser
+
+# адрес панели администратора
+http://127.0.0.1:8000/admin
+```
+
+## Тестирование
+Проект покрыт тестами на 91%. Для их запуска выполните команду:
+```sh
+pytest
+```
+
+## Команда проекта
+- Иван Скиба
