@@ -2,12 +2,13 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SECRET_KEY = os.getenv("SECRET_KEY", "default")
 
-SECRET_KEY = '=jn-w=1t8ok9fy7djh($4ajvpsp_u8+s#s_pkr!=#3hohk6p+n'
-
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
+    'www.mypyyatube.pythonanywhere.com',
+    'mypyyatube.pythonanywhere.com',
     'localhost',
     '127.0.0.1',
     '[::1]',
@@ -15,7 +16,7 @@ ALLOWED_HOSTS = [
 ]
 
 INTERNAL_IPS = [
-    "127.0.0.1",
+    '127.0.0.1',
 ]
 
 CACHES = {
@@ -25,13 +26,20 @@ CACHES = {
 }
 
 LOGIN_URL = 'users:login'
+
 LOGIN_REDIRECT_URL = 'posts:index'
 # LOGOUT_REDIRECT_URL = 'posts:index'
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 INSTALLED_APPS = [
@@ -61,8 +69,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'yatube.urls'
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
@@ -115,7 +121,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-STATIC_URL = '/static/'
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
